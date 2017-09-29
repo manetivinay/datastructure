@@ -14,3 +14,10 @@ class LinkedList:
 	# Function to initialize the LinkedList object
 	def __init__(self):
 		self.head = None
+
+	# This function prints contents of linked list starting from head
+	def print_list(self):
+		temp = self.head
+		while (temp):
+			print(temp.data)
+			temp = temp.next
