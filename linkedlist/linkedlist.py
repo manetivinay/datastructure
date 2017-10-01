@@ -1,23 +1,63 @@
 __author__ = "akhtar"
 
 
-# Node class
 class Node:
-	# Function to initialize the node object
 	def __init__(self, data):
-		self.data = data  # Assign data
-		self.next = None  # Initialize next as null
+		self.data = data
+		self.next = None
 
 
-# Linked List class
 class LinkedList:
-	# Function to initialize the LinkedList object
 	def __init__(self):
 		self.head = None
 
-	# This function prints contents of linked list starting from head
+	def insert_at_front(self, data):
+		node = Node(data)
+		node.next = self.head
+		self.head = node
+
+	def insert_in_between(self, data, position):
+		node = Node(data)
+		temp = self.head
+
+		if self.head is None:
+			print("List is empty, inserting as first element.")
+			self.head = node
+			return
+
+		if position == 1:
+			node.next = self.head
+			self.head = node
+			return
+
+		if position == 0:
+			print("Cannot insert at this position.")
+			return
+
+		for i in range(1, position-1):
+			temp = temp.next
+			if temp is None:
+				print("Cannot insert at this position.")
+				return
+
+		node.next = temp.next
+		temp.next = node
+
+	def insert_at_end(self, data):
+		node = Node(data)
+
+		if self.head is None:
+			self.head = node
+			return
+
+		temp = self.head
+		while(temp.next):
+			temp = temp.next
+
+		temp.next = node
+
 	def print_list(self):
 		temp = self.head
 		while (temp):
-			print(temp.data)
+			print(temp.data, end=" ", flush=True)
 			temp = temp.next
