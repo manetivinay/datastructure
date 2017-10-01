@@ -56,6 +56,27 @@ class LinkedList:
 
 		temp.next = node
 
+	def delete_node(self, data):
+		temp = self.head
+		previous = self.head
+
+		if self.head is None:
+			print("List is empty.")
+			return
+
+		if self.head.data == data:
+			self.head = self.head.next
+			return
+
+		while(temp.data != data):
+			previous = temp
+			temp = temp.next
+			if temp is None:
+				print("Data not found in the list.")
+				return
+
+		previous.next = temp.next
+
 	def print_list(self):
 		temp = self.head
 		while (temp):

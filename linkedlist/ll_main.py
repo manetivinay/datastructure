@@ -17,4 +17,5 @@ llist.insert_at_front(5)
 llist.insert_at_end(9)
 llist.insert_in_between(61, 2)
 
+llist.delete_node(2)
 llist.print_list()
