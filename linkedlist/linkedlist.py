@@ -68,7 +68,7 @@ class LinkedList:
 			self.head = self.head.next
 			return
 
-		while(temp.data != data):
+		while temp.data != data:
 			previous = temp
 			temp = temp.next
 			if temp is None:
@@ -76,6 +76,33 @@ class LinkedList:
 				return
 
 		previous.next = temp.next
+
+	def delete_node_at_position(self, position):
+		temp = self.head
+
+		if self.head is None:
+			print("List is empty.")
+			return
+
+		if position == 0:
+			print("Cannot delete at this position.")
+			return
+
+		if position == 1:
+			self.head = self.head.next
+			return
+
+		for i in range(1, position-1):
+			temp = temp.next
+			if temp is None:
+				print("Cannot delete at this position.")
+				return
+
+		if temp.next is None:
+			print("Cannot delete at this position.")
+			return
+
+		temp.next = temp.next.next
 
 	def print_list(self):
 		temp = self.head
