@@ -104,6 +104,29 @@ class LinkedList:
 
 		temp.next = temp.next.next
 
+	def length_iterative(self):
+		length = 0
+
+		if self.head is not None:
+			temp = self.head
+			while temp:
+				length += 1
+				temp = temp.next
+
+		return length
+
+	def length_recursive(self):
+		def get_length(node):
+			if not node:  # Base case
+				return 0
+			else:
+				return 1 + get_length(node.next)
+
+		return get_length(self.head)
+
+	def swap_nodes(self, first_data, second_data):
+		pass
+
 	def print_list(self):
 		temp = self.head
 		while (temp):

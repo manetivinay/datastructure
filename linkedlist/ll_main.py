@@ -19,4 +19,8 @@ llist.insert_in_between(61, 2)
 
 llist.delete_node(2)
 llist.delete_node_at_position(4)
+
+print("Length of linked list (iterative): {0}".format(llist.length_iterative()))
+print("Length of linked list (recursive): {0}".format(llist.length_recursive()))
+
 llist.print_list()
