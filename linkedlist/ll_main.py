@@ -24,3 +24,7 @@ print("Length of linked list (iterative): {0}".format(llist.length_iterative()))
 print("Length of linked list (recursive): {0}".format(llist.length_recursive()))
 
 llist.print_list()
+
+llist.reverse()
+
+llist.print_list()

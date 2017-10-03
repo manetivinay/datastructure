@@ -127,8 +127,21 @@ class LinkedList:
 	def swap_nodes(self, first_data, second_data):
 		pass
 
+	def reverse(self):
+		previous = None
+		current = self.head
+
+		while current is not None:
+			next = current.next
+			current.next = previous
+			previous = current
+			current = next
+
+		self.head = previous
+
 	def print_list(self):
 		temp = self.head
-		while (temp):
+		while temp:
 			print(temp.data, end=" ", flush=True)
 			temp = temp.next
+		print()
