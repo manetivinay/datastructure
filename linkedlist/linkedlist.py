@@ -124,6 +124,7 @@ class LinkedList:
 
 		return get_length(self.head)
 
+	#TODO: Swap 2 nodes of a list.
 	def swap_nodes(self, first_data, second_data):
 		pass
 
