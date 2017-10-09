@@ -17,14 +17,16 @@ llist.insert_at_front(5)
 llist.insert_at_end(9)
 llist.insert_in_between(61, 2)
 
-llist.delete_node(2)
-llist.delete_node_at_position(4)
+# llist.delete_node(2)
+# llist.delete_node_at_position(4)
 
 print("Length of linked list (iterative): {0}".format(llist.length_iterative()))
 print("Length of linked list (recursive): {0}".format(llist.length_recursive()))
 
 llist.print_list()
 
-llist.reverse()
+# llist.reverse()
 
+
+llist.reverse_in_groups(llist.head, 3)
 llist.print_list()

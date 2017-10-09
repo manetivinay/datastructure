@@ -34,7 +34,7 @@ class LinkedList:
 			print("Cannot insert at this position.")
 			return
 
-		for i in range(1, position-1):
+		for i in range(1, position - 1):
 			temp = temp.next
 			if temp is None:
 				print("Cannot insert at this position.")
@@ -51,7 +51,7 @@ class LinkedList:
 			return
 
 		temp = self.head
-		while(temp.next):
+		while (temp.next):
 			temp = temp.next
 
 		temp.next = node
@@ -92,7 +92,7 @@ class LinkedList:
 			self.head = self.head.next
 			return
 
-		for i in range(1, position-1):
+		for i in range(1, position - 1):
 			temp = temp.next
 			if temp is None:
 				print("Cannot delete at this position.")
@@ -124,7 +124,7 @@ class LinkedList:
 
 		return get_length(self.head)
 
-	#TODO: Swap 2 nodes of a list.
+	# TODO: Swap 2 nodes of a list.
 	def swap_nodes(self, first_data, second_data):
 		pass
 
@@ -139,6 +139,56 @@ class LinkedList:
 			current = next
 
 		self.head = previous
+
+	def reverse_in_groups(self, head, k):
+
+		# Recursive solution
+		current = head
+		next = None
+		previous = None
+		first = head
+		count = 0
+
+		while current is not None and count < k:
+			next = current.next
+			current.next = previous
+			previous = current
+			current = next
+			count += 1
+
+		if head == self.head:
+			self.head = previous
+
+		if next is not None:
+			first.next = self.reverse_in_groups(next, k)
+
+		return previous
+
+		######## Iterative solution ########
+		# curr = head
+		# previous = None
+		# last = None
+		# while curr:
+		# 	count = 0
+		# 	current = curr
+		# 	first = curr
+		# 	while current and count < k:
+		# 		next = current.next
+		# 		current.next = previous
+		# 		previous = current
+		# 		current = next
+		# 		count += 1
+		#
+		# 	if last:
+		# 		last.next = previous
+		# 	last = first
+		# 	curr = current
+		# 	if self.head == head:
+		# 		self.head = previous
+		# 	previous = first
+		#
+		# if previous:
+		# 	previous.next = None
 
 	def print_list(self):
 		temp = self.head
