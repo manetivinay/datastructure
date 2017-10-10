@@ -9,7 +9,18 @@ class Node:
 
 class LinkedList:
 	def __init__(self):
-		self.head = None
+		self.head = Node(1)
+		second = Node(35)
+		third = Node(3)
+		fourth = Node(11)
+		fifth = Node(2)
+		sixth = Node(99)
+
+		self.head.next = second  # Link first node with second one
+		second.next = third  # Link second node with the third one
+		third.next = fourth  # Link third node with the fourth one
+		fourth.next = fifth  # Link fourth node with the fifth one
+		fifth.next = sixth  # Link fifth node with the sixth one
 
 	def insert_at_front(self, data):
 		node = Node(data)
@@ -140,9 +151,7 @@ class LinkedList:
 
 		self.head = previous
 
-	def reverse_in_groups(self, head, k):
-
-		# Recursive solution
+	def reverse_in_groups_recursive(self, head, k):
 		current = head
 		next = None
 		previous = None
@@ -160,39 +169,39 @@ class LinkedList:
 			self.head = previous
 
 		if next is not None:
-			first.next = self.reverse_in_groups(next, k)
+			first.next = self.reverse_in_groups_recursive(next, k)
 
 		return previous
 
-		######## Iterative solution ########
-		# curr = head
-		# previous = None
-		# last = None
-		# while curr:
-		# 	count = 0
-		# 	current = curr
-		# 	first = curr
-		# 	while current and count < k:
-		# 		next = current.next
-		# 		current.next = previous
-		# 		previous = current
-		# 		current = next
-		# 		count += 1
-		#
-		# 	if last:
-		# 		last.next = previous
-		# 	last = first
-		# 	curr = current
-		# 	if self.head == head:
-		# 		self.head = previous
-		# 	previous = first
-		#
-		# if previous:
-		# 	previous.next = None
+	def reverse_in_groups_iterative(self, head, k):
+		curr = head
+		previous = None
+		last = None
+		while curr:
+			count = 0
+			current = curr
+			first = curr
+			while current and count < k:
+				next = current.next
+				current.next = previous
+				previous = current
+				current = next
+				count += 1
+
+			if last:
+				last.next = previous
+			last = first
+			curr = current
+			if self.head == head:
+				self.head = previous
+			previous = first
+
+		if previous:
+			previous.next = None
 
 	def print_list(self):
 		temp = self.head
 		while temp:
 			print(temp.data, end=" ", flush=True)
 			temp = temp.next
-		print()
+		print("\n")

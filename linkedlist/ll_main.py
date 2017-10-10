@@ -1,32 +1,51 @@
-from linkedlist.linkedlist import LinkedList, Node
+from linkedlist.linkedlist import LinkedList
 
 __author__ = "akhtar"
 
 
-llist = LinkedList()  # Start with the empty list
+llist = LinkedList()  # Create the linked list
 
-# Create 3 nodes
-llist.head = Node(1)
-second = Node(2)
-third = Node(3)
+print("\nInitial list:", end=" ")
+llist.print_list()
+print("Length of linked list (iterative): {0}".format(llist.length_iterative()), end="\n\n")
+print("Length of linked list (recursive): {0}".format(llist.length_recursive()), end="\n\n")
 
-llist.head.next = second  # Link first node with second one
-second.next = third  # Link second node with the third one
 
 llist.insert_at_front(5)
-llist.insert_at_end(9)
-llist.insert_in_between(61, 2)
-
-# llist.delete_node(2)
-# llist.delete_node_at_position(4)
-
-print("Length of linked list (iterative): {0}".format(llist.length_iterative()))
-print("Length of linked list (recursive): {0}".format(llist.length_recursive()))
-
+print("After inserting 5 at beginning:", end=" ")
 llist.print_list()
 
-# llist.reverse()
+
+llist.insert_at_end(9)
+print("After inserting 9 at end:", end=" ")
+llist.print_list()
 
 
-llist.reverse_in_groups(llist.head, 3)
+llist.insert_in_between(61, 2)
+print("After inserting 61 at second position:", end=" ")
+llist.print_list()
+
+
+llist.delete_node(2)
+print("After deleting 2:", end=" ")
+llist.print_list()
+
+
+llist.delete_node_at_position(4)
+print("After deleting element at 4th position:", end=" ")
+llist.print_list()
+
+
+llist.reverse()
+print("After reversing the list:", end=" ")
+llist.print_list()
+
+
+llist.reverse_in_groups_recursive(llist.head, 3)
+print("After reversing in groups of 3 (recursive solution):", end=" ")
+llist.print_list()
+
+
+llist.reverse_in_groups_iterative(llist.head, 2)
+print("After reversing in groups of 2 (iterative solution):", end=" ")
 llist.print_list()
