@@ -72,4 +72,4 @@ target/
 # VS Local Conf.
 .vscode/
 
-.idea
+.idea/
