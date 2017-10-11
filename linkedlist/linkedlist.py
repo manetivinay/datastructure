@@ -9,18 +9,25 @@ class Node:
 
 class LinkedList:
 	def __init__(self):
-		self.head = Node(1)
-		second = Node(35)
-		third = Node(3)
-		fourth = Node(11)
-		fifth = Node(2)
-		sixth = Node(99)
+		self.head = None
+
+	def create_list(self, **kwargs):
+		self.head = kwargs.get("head")
+		second = kwargs.get("second")
+		third = kwargs.get("third")
+		fourth = kwargs.get("fourth")
+		fifth = kwargs.get("fifth")
+		sixth = kwargs.get("sixth")
 
 		self.head.next = second  # Link first node with second one
 		second.next = third  # Link second node with the third one
 		third.next = fourth  # Link third node with the fourth one
 		fourth.next = fifth  # Link fourth node with the fifth one
 		fifth.next = sixth  # Link fifth node with the sixth one
+
+		loop = kwargs.get("loop")
+		if loop:
+			sixth.next = third
 
 	def insert_at_front(self, data):
 		node = Node(data)
@@ -198,6 +205,34 @@ class LinkedList:
 
 		if previous:
 			previous.next = None
+
+	def find_loop_and_remove(self):
+		hare = self.head
+		tortoise = self.head
+		loop_exists = False
+
+		while hare is not None and hare.next is not None:
+			hare = hare.next.next
+			tortoise = tortoise.next
+
+			if hare == tortoise:
+				loop_exists = True
+				break
+
+		if loop_exists:
+			tortoise = self.head
+
+			prev = None
+			while tortoise != hare:
+				prev = hare
+				tortoise = tortoise.next
+				hare = hare.next
+
+			prev.next = None
+
+			return "Loop exists, loop start point = {0}, List after removing loop: ".format(hare.data)
+
+		return "No loop exists. List:"
 
 	def print_list(self):
 		temp = self.head

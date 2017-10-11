@@ -1,9 +1,12 @@
-from linkedlist.linkedlist import LinkedList
+from linkedlist.linkedlist import LinkedList, Node
 
 __author__ = "akhtar"
 
 
-llist = LinkedList()  # Create the linked list
+# Create the linked list
+llist = LinkedList()
+llist.create_list(head=Node(1), second=Node(35), third=Node(3), fourth=Node(11), fifth=Node(2), sixth=Node(99))
+
 
 print("\nInitial list:", end=" ")
 llist.print_list()
@@ -49,3 +52,9 @@ llist.print_list()
 llist.reverse_in_groups_iterative(llist.head, 2)
 print("After reversing in groups of 2 (iterative solution):", end=" ")
 llist.print_list()
+
+# Create the looped linked list
+loop_list = LinkedList()
+loop_list.create_list(head=Node(1), second=Node(35), third=Node(3), fourth=Node(11), fifth=Node(2), sixth=Node(99), loop=True)
+print(loop_list.find_loop_and_remove(), end=" ")
+loop_list.print_list()
